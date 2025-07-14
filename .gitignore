@@ -1,0 +1,21 @@
+# macOS
+.DS_Store
+
+# Node
+**/node_modules/
+**/logs/
+**/*.log
+
+# dotenv
+**/.env
+
+# Front build
+client/build/
+client/dist/
+
+# Mongo dump
+**/dump/
+
+# Images
+server/images/*
+!server/images/.gitkeep
