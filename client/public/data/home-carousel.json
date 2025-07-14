@@ -1,0 +1,40 @@
+[
+    {
+        "background": "../../Assets/Home_carousel/summer.png",
+        "title": "L'ÉTÉ EST LÀ !",
+        "subtitle": "IL EST TEMPS DE RETAPER VOTRE TERRASSE",
+        "links": [
+            "Voir les parquets pour extérieur",
+            "Voir les peintures pour extérieur",
+            "Voir les faux gazons"
+        ]
+    },
+    {
+        "background": "../../Assets/Home_carousel/shade-summer.png",
+        "title": "PROTÉGEZ-VOUS DU SOLEIL ☀️",
+        "subtitle": "OPTEZ POUR UNE TERRASSE OMBRAGÉE",
+        "links": [
+            "Voir les tonnelles et pergolas",
+            "Voir les stores extérieurs"
+        ]
+    },
+    {
+        "background": "../../Assets/Home_carousel/garden-renovation.png",
+        "title": "AMÉNAGEZ VOTRE JARDIN",
+        "subtitle": "FAITES DE VOTRE EXTÉRIEUR UN PETIT PARADIS",
+        "links": [
+            "Voir les dalles de jardin",
+            "Voir les cabanes de rangement",
+            "Voir les luminaires extérieurs"
+        ]
+    },
+    {
+        "background": "../../Assets/Home_carousel/shade-summer.png",
+        "title": "C’EST LE MOMENT DE RÉNOVER !",
+        "subtitle": "AVANT LE BARBECUE, UN COUP DE FRAIS À L’INTÉRIEUR",
+        "links": [
+            "Voir les peintures pour intérieur",
+            "Voir les sols faciles à poser"
+        ]
+    }
+]

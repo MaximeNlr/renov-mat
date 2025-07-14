@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "title": "PEINTURE POUR BOIS",
+        "img": "../../Assets/category/wood.png"
+    },
+    {
+        "id": 2,
+        "title": "PEINTURE POUR MÉTAL",
+        "img": "../../Assets/category/steel.png"
+    },
+    {
+        "id": 3,
+        "title": "PEINTURE POUR INTERIEUR",
+        "img": "../../Assets/category/inside.png"
+    },
+    {
+        "id": 4,
+        "title": "PEINTURE POUR PLAFOND",
+        "img": "../../Assets/category/ceiling.png"
+    },
+    {
+        "id": 5,
+        "title": "PEINTURE POUR SOL",
+        "img": "../../Assets/category/floor.png"
+    },
+    {
+        "id": 6,
+        "title": "PEINTURE POUR CARRELAGE",
+        "img": "../../Assets/category/tiles.png"
+    },
+    {
+        "id": 7,
+        "title": "PEINTURE POUR RADIATEUR",
+        "img": "../../Assets/category/radiator.png"
+    },
+    {
+        "id": 8,
+        "title": "PEINTURE POUR SALLE DE BAIN",
+        "img": "../../Assets/category/bathroom.png"
+    }
+]

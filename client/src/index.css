@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --yellow: #FFC518;
+  --green: #698B65;
+  --pink: #FF72AF;
+  --purple: #cc6ed0;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  font-family: nunito, sans-serif;
+}
+
+.renov-title {
+  font-family: 'Rubik Wet Paint', cursive;
+}
+
+.profile-inputs input,
+select {
+  @apply border-2 border-[var(--green)] rounded-[5px] w-[15vw] h-[4vh] outline-0
+}
+
+.profile-inputs label {
+  @apply w-[150px]
+}
+
+.profile-input-label-container {
+  @apply flex gap-3 items-center
+}
+
+.profile-pref {
+  @apply w-1/4 rounded-[5px] text-center pt-2 pb-2 cursor-pointer whitespace-nowrap
+}
+
+.custom-checkbox {
+  @apply mr-2
+}
+
+.selected-product-container h3 {
+  @apply font-extrabold text-[1.1rem] mb-1.5
+}
+
+.selected-product-container label {
+  @apply text-[0.9rem]
+}
+
+.btn {
+  @apply bg-[var(--green)] rounded-lg p-2 cursor-pointer font-bold text-white hover:bg-[#4c6648] hover:scale-105 transform transition-colors transition-transform duration-200;
+}
