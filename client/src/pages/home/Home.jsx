@@ -42,7 +42,7 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
-                <div className="lg:w-[20%] flex flex-col text-center rounded-lg justify-around text-white font-extrabold bg-[#FFC518]">
+                <div className="lg:w-[20%] flex flex-col text-center rounded-lg justify-around text-white font-extrabold bg-[#FFC518] pb-2">
                     <div className="text-xl lg:text-2xl">
                         <h2>La communauté</h2>
                         <h2>Renov’mat</h2>

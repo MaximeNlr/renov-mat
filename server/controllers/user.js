@@ -28,8 +28,7 @@ exports.signup = async (req, res, next) => {
       res.status(201).json({ success: true, message: 'Utilisateur enregistré !' });
     } catch (error) {
       console.log(error);
-      
-      res.status(500).json({ error });
+      return res.status(500).json({success: false, message: 'Erreur serveur'})
     }
   };
 
@@ -58,18 +57,18 @@ exports.signup = async (req, res, next) => {
         maxAge: 24 * 60 * 60 * 1000
       });
   
-      res.status(200).json({  success: true ,message: 'Utilisateur connecté !' });
+      return res.status(200).json({  success: true ,message: 'Utilisateur connecté !' });
     } catch (error) {
-      res.status(500).json({ success: false, error });
+      return res.status(500).json({success: false, message: 'Erreur serveur'})
     }
   };
 
 exports.logout = async (req, res, next) => {
     try {
        res.clearCookie('token');
-        res.status(200).json({ sucess: true })
+        return res.status(200).json({ sucess: true })
     } catch (error) {
-        res.status(500).json({ error });
+      return res.status(500).json({success: false, message: 'Erreur serveur'})
     }
 };
 
@@ -77,7 +76,7 @@ exports.getUser = async (req, res, next) => {
     try {
         const user = await User.findOne({ _id: req.userId });
         if (!user) {
-            return res.status(404).json({success: false, message: 'Utilisateur non trouvé !'})
+            return res.status(404).json({success: false, message: 'Utilisateur introuvable !'})
         } else {
           const date = new Date(user.birthday);
           return res.status(200).json({
@@ -91,7 +90,7 @@ exports.getUser = async (req, res, next) => {
         });
         }
     } catch (error) {
-        return res.status(500).json({ success: false, error});
+      return res.status(500).json({success: false, message: 'Erreur serveur'})
     }
 };
 
@@ -106,7 +105,7 @@ exports.getSeller = async (req, res, next) => {
       })
     }
   } catch (error) {
-    res.status(500).json({success: false, error})
+    return res.status(500).json({success: false, message: 'Erreur serveur'})
   }
 };
 
@@ -119,9 +118,9 @@ exports.uploadAvatar = async (req, res, next) => {
     const filePath = `/images/${req.files[0].filename}`;    
     const user = await User.findByIdAndUpdate(userId, {imageUrl: filePath})
 
-    res.status(200).json({success: true, user})
+    return res.status(200).json({success: true, user})
   } catch (error) {
-    res.status(500).json({success: false, error: error});
+    return res.status(500).json({success: false});
   };
 };
 
@@ -129,6 +128,6 @@ exports.updateUser = async (req, res, next) => {
   try {
     
   } catch (error) {
-    res.status(500).json({success: false, error})
+    return res.status(500).json({success: false, message: 'Erreur serveur'})
   }
 }

@@ -23,7 +23,9 @@ export default function UserAds() {
                 const data = await response.json();
                 setAds(data.ads);
                 console.log(data);
-
+                if (data.success === false) {
+                    setAds([]);
+                }
                 setTimeout(() => {
                     setLoading(false);
                 }, 500)
