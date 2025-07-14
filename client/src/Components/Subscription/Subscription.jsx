@@ -5,8 +5,8 @@ export default function Subscription({ user }) {
                 <h2 className="text-2xl lg:text-3xl	">ABONNEMENT</h2>
             </div>
             <div className="flex gap-20 text-base lg:text-lg">
-                <p>Abonnement {user.sub}</p>
-                <p>{user.sub_amount}/mois</p>
+                <p>Abonnement : <span>Premium</span></p>
+                <p><span>5.99 €</span> /mois</p>
             </div>
             <div>
                 <button
