@@ -1,4 +1,5 @@
 import Header from '../../Components/Header/Header';
+import MobileHeader from '../../Components/MobileHeader/MobileHeader';
 import Promo from '../../Components/Promo/Promo';
 import Footer from '../../Components/Footer/Footer';
 import { useEffect, useState } from 'react';
@@ -24,6 +25,9 @@ export default function SearchedProduct() {
         <div className="selected-product-container">
             <div>
                 <Header />
+            </div>
+            <div>
+                <MobileHeader />
             </div>
             <div className="mb-8">
                 <Promo />

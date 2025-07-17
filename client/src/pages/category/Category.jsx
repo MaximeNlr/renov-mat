@@ -1,6 +1,7 @@
-import Header from "../../Components/Header/Header"
-import Footer from "../../Components/Footer/Footer"
-import { useState, useEffect } from "react"
+import Header from "../../Components/Header/Header";
+import MobileHeader from "../../Components/MobileHeader/MobileHeader";
+import Footer from "../../Components/Footer/Footer";
+import { useState, useEffect } from "react";
 
 export default function Category() {
 
@@ -22,8 +23,11 @@ export default function Category() {
 
     return (
         <div>
-            <div>
+            <div className="hidden md:flex">
                 <Header />
+            </div>
+            <div className="flex md:hidden">
+                <MobileHeader />
             </div>
             <div className="bg-[var(--yellow)] text-white text-center p-5">
                 <h1 className="font-bold text-4xl">PEINTURE</h1>

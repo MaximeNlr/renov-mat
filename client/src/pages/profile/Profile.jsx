@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import Header from "../../Components/Header/Header";
+import MobileHeader from "../../Components/MobileHeader/MobileHeader";
 import Promo from "../../Components/Promo/Promo";
 import Footer from "../../Components/Footer/Footer";
 import { useState, useEffect } from "react";
@@ -15,7 +16,6 @@ import { body } from "framer-motion/client";
 
 export default function Profile() {
 
-    const isAuth = useAuth();
     const [state, setState] = useState('profile');
 
     const [user, setUser] = useState({});
@@ -85,17 +85,20 @@ export default function Profile() {
     };
     return (
         <div>
-            <div>
+            <div className="hidden md:flex">
                 <Header />
+            </div>
+            <div className="flex md:hidden">
+                <MobileHeader />
             </div>
             <div>
                 <Promo />
             </div>
-            <div className="pl-20 pr-20 pt-10 pb-10">
-                <div className="flex justify-between">
-                    <div className="flex items-center lg:gap-2.5">
+            <div className="py-5 px-2 lg:px-20 lg:py-10">
+                <div className="flex flex-col lg:flex-row justify-between">
+                    <div className="flex flex-col lg:flex-row items-center lg:gap-2.5">
                         <label
-                            className="group lg:w-36 lg:h-36 aspect-square border rounded-full flex items-center justify-center overflow-hidden relative cursor-pointer"
+                            className="h-14 w-14 lg:w-36 lg:h-36 aspect-square border rounded-full flex items-center justify-center overflow-hidden relative cursor-pointer"
                         >
                             <img
                                 src={`http://localhost:3000${user.image}`}
@@ -113,13 +116,10 @@ export default function Profile() {
                             />
                         </label>
                         <h2 className="text-2xl lg:text-3xl font-bold">Bienvenue {user.firstname}</h2>
-                        {isAuth &&
-                            <div>
-                                <Logout />
-                            </div>
-                        }
                     </div>
-                    <Subscription user={user} />
+                    <div className="mt-8">
+                        <Subscription user={user} />
+                    </div>
                 </div>
                 <div className="mt-10">
                     <div className="flex ml-10 gap-10 font-extrabold">

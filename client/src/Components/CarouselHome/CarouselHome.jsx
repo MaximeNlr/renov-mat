@@ -3,11 +3,13 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa"
 import { motion, AnimatePresence } from "framer-motion";
+import useIsMobile from "../../hooks/useIsMobile";
 
 export default function CarouselHome() {
 
     const [currentSlide, setCurrentSlide] = useState(0);
     const [slides, setSlides] = useState([]);
+    const isMobile = useIsMobile();
 
     useEffect(() => {
         const fetchCarousel = async () => {
@@ -45,67 +47,84 @@ export default function CarouselHome() {
     }
 
     return (
-        <div className="flex flex-row gap-3">
-            <div className="flex items-center pl-5 pr-5">
+        <div className="relative w-full">
+            <div className=" w-full lg:w-[90%] lg:m-auto h-[250px] sm:h-[300px] md:h-[400px] lg:h-[500px] bg-gray-300 rounded-b-lg overflow-hidden">
+                <motion.div
+                    key={currentSlide}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                    className="relative w-full h-full"
+                >
+                    <img
+                        src={slide.background}
+                        alt={slide.title}
+                        className="absolute inset-0 w-full h-full object-cover rounded-b-lg"
+                        loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-black/10 backdrop-blur-[2px] z-0 flex flex-col justify-center gap-10 px-4 md:px-10 py-4">
+                        <div className="text-white">
+                            <motion.h1
+                                initial={{ opacity: 0, x: 20 }}
+                                animate={{ opacity: 1, x: 5 }}
+                                exit={{ opacity: 0, x: -100 }}
+                                transition={{ duration: 1 }}
+                                className="flex flex-col gap-3 text-2xl sm:text-3xl lg:text-5xl font-bold"
+                            >
+                                {slide.title}
+                                <span className="text-xl sm:text-2xl lg:text-4xl">{slide.subtitle}</span>
+                            </motion.h1>
+                        </div>
+                        <div>
+                            {!isMobile &&
+                                <div className="flex flex-wrap gap-4 text-[var(--pink)]">
+                                    {slide.links.map((link, index) => (
+                                        <div
+                                            className="bg-white text-sm sm:text-base md:text-lg font-extrabold p-3 rounded-lg cursor-pointer shadow-lg hover:scale-105 transition-transform duration-100"
+                                            key={index}
+                                        >
+                                            <Link href="#">{link}</Link>
+                                        </div>
+                                    ))}</div>
+                            }
+                            {isMobile &&
+                                <div className="">
+                                    <button
+                                        className="text-[var(--pink)] bg-white text-sm sm:text-base md:text-lg font-extrabold p-3 rounded-lg cursor-pointer shadow-lg hover:scale-105 transition-transform duration-100"
+                                    >
+                                        Voir plus
+                                    </button>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </motion.div>
+                <div className="hidden lg:flex absolute top-1/2 -translate-y-1/2 left-6 z-10">
+                    <FaChevronLeft
+                        className="cursor-pointer text-[var(--yellow)] text-3xl hover:text-[var(--green)] transition-colors duration-100"
+                        onClick={prevslide}
+                    />
+                </div>
+                <div className="hidden lg:flex absolute top-1/2 -translate-y-1/2 right-6 z-10">
+                    <FaChevronRight
+                        className="cursor-pointer text-[var(--yellow)] text-3xl hover:text-[var(--green)] transition-colors duration-100"
+                        onClick={nextSlide}
+                    />
+                </div>
+            </div>
+            <div className="flex justify-center gap-10 mt-4 lg:hidden">
                 <FaChevronLeft
                     className="cursor-pointer text-[var(--yellow)] text-3xl hover:text-[var(--green)] transition-colors duration-100"
                     onClick={prevslide}
                 />
-            </div>
-            <AnimatePresence
-                className="relative w-full rounded-b-lg"
-            >
-                <div className="relative w-full lg:h-[500px] bg-gray-300 rounded-b-lg overflow-hidden">
-                    <motion.div
-                        key={currentSlide}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.5, ease: "easeInOut" }}
-                        className="relative lg:h-[500px] w-full bg-cover font-bold rounded-b-lg object-cover inset-0 z-0"
-                    >
-                        <div>
-                            <img
-                                src={slide.background} alt={slide.title}
-                                className="absolute inset-0 w-full h-full object-cover rounded-b-lg"
-                                loading="lazy"
-                            />
-                        </div>
-                        <div className="absolute inset-0 bg-black/10 backdrop-blur-[2px] rounded-b-2xl z-0 flex flex-col justify-center gap-20 pl-14">
-                            <div className="text-white flex flex-col gap-3">
-                                <motion.h1
-                                    initial={{ opacity: 0, x: 20 }}
-                                    animate={{ opacity: 1, x: 5 }}
-                                    exit={{ opacity: 0, x: -100 }}
-                                    transition={{ duration: 1 }}
-                                    className="flex flex-col gap-4 text-4xl lg:text-5xl"
-                                >
-                                    {slide.title}
-                                    <span className="text-3xl lg:text-4xl"
-                                    >
-                                        {slide.subtitle}
-                                    </span>
-                                </motion.h1>
-                            </div>
-                            <div className="flex gap-10 text-[var(--pink)]">
-                                {slide.links.map((link, index) => (
-                                    <div
-                                        className="bg-white text-base lg:text-lg font-extrabold p-3.5 rounded-lg cursor-pointer shadow-2xl shadow-black hover:scale-[1.1] duration-100"
-                                        key={index}>
-                                        <Link href="#">{link}</Link>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </motion.div >
-                </div>
-            </AnimatePresence>
-            <div className="flex items-center pr-5 pl-5">
                 <FaChevronRight
                     className="cursor-pointer text-[var(--yellow)] text-3xl hover:text-[var(--green)] transition-colors duration-100"
                     onClick={nextSlide}
                 />
             </div>
         </div>
+
+
     );
 };

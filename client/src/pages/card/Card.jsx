@@ -1,7 +1,8 @@
-import Header from "../../Components/Header/Header"
-import Promo from "../../Components/Promo/Promo"
-import Footer from "../../Components/Footer/Footer"
-import { useState, useEffect } from "react"
+import Header from "../../Components/Header/Header";
+import MobileHeader from "../../Components/MobileHeader/MobileHeader";
+import Promo from "../../Components/Promo/Promo";
+import Footer from "../../Components/Footer/Footer";
+import { useState, useEffect } from "react";
 
 export default function Card() {
 
@@ -26,8 +27,11 @@ export default function Card() {
 
     return (
         <div>
-            <div>
+            <div className="hidden md:flex">
                 <Header />
+            </div>
+            <div className="flex md:hidden">
+                <MobileHeader />
             </div>
             <div>
                 <Promo />

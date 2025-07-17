@@ -13,8 +13,8 @@ export default function UserInfo({ user }) {
     return (
         <div className="lg:h-full">
             <form action="" className="h-full">
-                <div className="flex h-full">
-                    <div className="flex gap-10 w-1/2 ml-14">
+                <div className="flex flex-col lg:flex-row h-full">
+                    <div className="flex gap-10 w-1/2 lg:ml-14">
                         <div className="profile-inputs flex flex-col lg:gap-6 justify-center text-base lg:text-lg">
                             <div className="profile-input-label-container">
                                 <label className="font-medium" htmlFor="">Prénom</label>
@@ -22,7 +22,8 @@ export default function UserInfo({ user }) {
                             </div>
                             <div className="profile-input-label-container">
                                 <label className="font-medium" htmlFor="">Nom</label>
-                                <input className="pl-2" type="text" defaultValue={user.lastname} />
+                                <input
+                                    className="pl-2 w-8" type="text" defaultValue={user.lastname} />
                             </div>
                             <div className="profile-input-label-container">
                                 <label className="font-medium" htmlFor="">Mail</label>

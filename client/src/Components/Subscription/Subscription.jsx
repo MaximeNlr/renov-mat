@@ -1,10 +1,10 @@
 export default function Subscription({ user }) {
     return (
-        <div className="flex flex-col justify-around items-center w-1/3 h-56 rounded-lg bg-[var(--yellow)] font-extrabold text-white">
+        <div className="flex flex-col justify-around items-center h-56  px-4 py-4 rounded-lg bg-[var(--yellow)] font-extrabold text-white">
             <div>
                 <h2 className="text-2xl lg:text-3xl	">ABONNEMENT</h2>
             </div>
-            <div className="flex gap-20 text-base lg:text-lg">
+            <div className="flex gap-20 text-base lg:text-lg whitespace-nowrap">
                 <p>Abonnement : <span>Premium</span></p>
                 <p><span>5.99 €</span> /mois</p>
             </div>

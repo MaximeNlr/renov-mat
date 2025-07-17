@@ -70,12 +70,16 @@ exports.GetUserAd = async(req, res, next) => {
 
 exports.adView = async(req, res, next) => {
   try {
-    const ad = await Ad.findOne({_id: req.params.id }).populate('images').populate({ path: 'user_id', select: '_id firstname adress imageUrl' });
+    const ad = await Ad.findOne({seller_id: req.params.id }).populate('images');
     if (!ad) {
-      return res.status(404).json({message: 'Annonce non trouvé !'});
-    } else {
-      return res.status(200).json({success: true, ad});
+      return res.status(404).json({message: 'Annonce introuvable !'});
+    };
+    const seller = await Seller.findOne({ _id: req.params.id }).populate({ path: 'user_id', select: '_id firstname adress imageUrl' })
+    if (!seller) {
+      return res.status(404).json({success: false, message: 'Vendeur introuvable'})
     }
+      return res.status(200).json({success: true, ad, seller});
+
   } catch (error) {    
     return res.status(500).json({success: false, message: 'Erreur serveur'})
   }

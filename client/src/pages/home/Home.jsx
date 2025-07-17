@@ -6,6 +6,7 @@ import CarouselHome from "../../Components/CarouselHome/CarouselHome";
 import Tendancy from "../../Components/Tendancy/Tendancy";
 import AdPreview from "../../Components/Ad_Preview/AdPreview";
 import Footer from "../../Components/Footer/Footer";
+import CreateAdBtn from "../../Components/Create_ad_btn/CreateAdBtn";
 
 
 export default function Home() {
@@ -23,39 +24,44 @@ export default function Home() {
             <div className="home-carousel-container">
                 <CarouselHome />
             </div>
-            <div className="flex flex-wrap mt-10 font-bold justify-between ml-[80px] mr-[80px]">
-                <div className="w-[20%]">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 px-6 lg:px-20 mt-10 font-bold">
+                <div className="">
                     <Tendancy />
                 </div>
-                <div className="flex flex-col items-center w-[40%] border-3 rounded-xl border-[#FFC518] text-[var(--green)]">
-                    <div className="flex flex-col justify-around items-center w-[100%] h-full">
-                        <img src="../../Assets/map-pin.svg" alt="" />
-                        <p className="font-extrabold">Trouvez des annonces près de chez vous !</p>
-                        <div className="flex flex-row justify-between h-9 w-[65%] border-2 border-[var(--green)] rounded-l-lg">
-                            <input
-                                className="w-[80%] outline-0 pl-3"
-                                type="text" />
-                            <div className="flex flex-row gap-2 w-[30%]">
-                                <img src="../../Assets/localisation.svg" alt="" />
-                                <button className="bg-[var(--yellow)] cursor-pointer w-[100%]">Go</button>
-                            </div>
+                <div className="bg-white border-2 border-yellow-400 rounded-xl text-[var(--green)] flex flex-col items-center justify-center p-6 shadow-sm">
+                    <div className="flex flex-col items-center gap-3">
+                        <CreateAdBtn />
+                        <div>
+                            <span>Ou</span>
                         </div>
+                        <p className="text-center font-extrabold mb-4">Trouvez des annonces près de chez vous !</p>
+                    </div>
+                    <div className="flex w-full max-w-md border border-[var(--green)] rounded-lg overflow-hidden">
+                        <input
+                            className="flex-grow px-3 py-2 outline-none"
+                            type="text"
+                            placeholder="Votre ville, code postal..."
+                        />
+                        <button className="bg-[var(--yellow)] text-black px-4 cursor-pointer">Go</button>
                     </div>
                 </div>
-                <div className="lg:w-[20%] flex flex-col text-center rounded-lg justify-around text-white font-extrabold bg-[#FFC518] pb-2">
-                    <div className="text-xl lg:text-2xl">
+                <div className="bg-yellow-400 text-white rounded-xl p-6 flex flex-col justify-between shadow-md">
+                    <div className="text-2xl text-center mb-4">
                         <h2>La communauté</h2>
                         <h2>Renov’mat</h2>
                     </div>
-                    <div className="text-base lg:text-lg p-3">
-                        <p>Besoin de conseils, d’inspriration ou juste envie d’aider d’autre Mat ?</p>
+                    <div className="text-sm lg:text-base text-center mb-4">
+                        <p>Besoin de conseils, d’inspiration ou juste envie d’aider d’autres Mat ?</p>
                         <p>Rejoins le forum Renov’mat !</p>
                     </div>
-                    <div className="flex justify-center text-base lg:text-lg">
-                        <button className="bg-white cursor-pointer w-1/2 rounded-lg text-[#698B65]">JE FONCE !</button>
+                    <div className="flex justify-center">
+                        <button className="bg-white text-[var(--pink)] font-bold px-4 py-2 rounded-lg">
+                            JE FONCE !
+                        </button>
                     </div>
                 </div>
             </div>
+
             <div>
                 <AdPreview />
             </div>

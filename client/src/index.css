@@ -54,5 +54,5 @@ select {
 }
 
 .btn {
-  @apply bg-[var(--green)] rounded-lg p-2 cursor-pointer font-bold text-white hover:bg-[#4c6648] hover:scale-105 transform transition-colors transition-transform duration-200;
+  @apply bg-[var(--green)] text-base md:text-lg rounded-lg p-2 cursor-pointer font-bold text-white hover:bg-[#4c6648] hover:scale-105 transform transition-colors transition-transform duration-200;
 }

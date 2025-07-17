@@ -1,12 +1,16 @@
-import Header from "../../Components/Header/Header"
-import Promo from "../../Components/Promo/Promo"
-import Footer from "../../Components/Footer/Footer"
+import Header from "../../Components/Header/Header";
+import MobileHeader from "../../Components/MobileHeader/MobileHeader";
+import Promo from "../../Components/Promo/Promo";
+import Footer from "../../Components/Footer/Footer";
 
 export default function About() {
     return (
         <div>
-            <div>
+            <div className="hidden md:flex">
                 <Header />
+            </div>
+            <div className="flex md:hidden">
+                <MobileHeader />
             </div>
             <div>
                 <Promo />

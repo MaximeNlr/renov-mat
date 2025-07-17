@@ -1,4 +1,5 @@
 import Header from "../../Components/Header/Header";
+import MobileHeader from "../../Components/MobileHeader/MobileHeader";
 import Footer from "../../Components/Footer/Footer";
 import Promo from "../../Components/Promo/Promo";
 import { useState, useEffect } from "react";
@@ -12,7 +13,7 @@ export default function SelectedAd() {
     const { state: data } = useLocation();
     const navigate = useNavigate();
     const [ad, setAd] = useState([]);
-    const [user, setUser] = useState([]);
+    const [seller, setSeller] = useState([]);
     const [currentImage, setCurrentImage] = useState(0);
     const [dataImages, setDataImages] = useState([]);
 
@@ -22,7 +23,7 @@ export default function SelectedAd() {
     useEffect(() => {
         if (data) {
             setAd(data.ad);
-            setUser(data.ad.user_id);
+            setSeller(data.seller.user_id);
             setDataImages(data.ad.images);
         };
     }, []);
@@ -46,28 +47,21 @@ export default function SelectedAd() {
         };
     };
 
-    const fetchSellerProfile = async (id) => {
-        try {
-            const options = {
-                method: 'GET',
-                headers: { 'Content-type': 'application/json' }
-            };
-            const response = await fetch(`http://localhost:3000/api/user/seller/${id}`, options);
-            const data = await response.json();
-            console.log(data);
-            if (data.success === true) {
-                navigate('/seller', { state: data });
-            };
-        } catch (error) {
-            console.error(error);
+    const fetchSellerProfile = async () => {
+        if (seller) {
+            navigate('/seller', { state: seller });
+        }
+        else {
+            return
         }
     };
-    console.log(user);
-
     return (
         <div>
-            <div>
+            <div className="hidden md:flex">
                 <Header />
+            </div>
+            <div className="flex md:hidden">
+                <MobileHeader />
             </div>
             <div>
                 <Promo />
@@ -167,7 +161,7 @@ export default function SelectedAd() {
                         <div className="flex flex-row bg-[#ffe79e] lg:w-[30%] lg:h-[25vh] items-center justify-center gap-10 p-2.5 rounded-l-[15px]">
                             <div className="">
                                 <img
-                                    src={`http://localhost:3000${user.imageUrl}`}
+                                    src={`http://localhost:3000${seller.imageUrl}`}
                                     alt="Photo du vendeur"
                                     className="h-36 w-36 bg-amber-50 rounded-full object-cover"
                                 />
@@ -175,7 +169,7 @@ export default function SelectedAd() {
                             <div className="flex flex-col gap-6">
                                 <div className="flex flex-col gap-3">
                                     <div>
-                                        <h2 className="text-2xl font-bold">{user.firstname}</h2>
+                                        <h2 className="text-2xl font-bold">{seller.firstname}</h2>
                                     </div>
                                     <div className="items-center">
                                         <div className="flex flex-row">
@@ -188,14 +182,14 @@ export default function SelectedAd() {
                                         </div>
                                         <div className="flex flex-row gap-1">
                                             <img src="../../Assets/location.svg" alt="icon de localisation" />
-                                            <p>{user.adress}</p>
+                                            <p>{seller.adress}</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div>
                                     <button
                                         className="btn w-full"
-                                        onClick={() => fetchSellerProfile(user._id)}
+                                        onClick={() => fetchSellerProfile(seller._id)}
                                     >
                                         VOIR PLUS
                                     </button>

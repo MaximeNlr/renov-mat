@@ -1,7 +1,8 @@
-import Header from "../../Components/Header/Header"
-import Promo from "../../Components/Promo/Promo"
-import Footer from "../../Components/Footer/Footer"
-import { useState, useEffect } from "react"
+import Header from "../../Components/Header/Header";
+import MobileHeader from "../../Components/MobileHeader/MobileHeader";
+import Promo from "../../Components/Promo/Promo";
+import Footer from "../../Components/Footer/Footer";
+import { useState, useEffect } from "react";
 
 export default function Blog() {
 
@@ -28,15 +29,17 @@ export default function Blog() {
 
   return (
     <div>
-      <div>
+      <div className="hidden md:flex">
         <Header />
+      </div>
+      <div className="flex md:hidden">
+        <MobileHeader />
       </div>
       <div>
         <Promo />
       </div>
       <div className="relative w-full mt-8 overflow-hidden">
         <div className="flex justify-center gap-16 relative h-[400px]">
-          {/* Image précédente partiellement visible */}
           <div
             className="w-1/4 flex-shrink-0 opacity-40"
             style={{
@@ -45,7 +48,6 @@ export default function Blog() {
               backgroundPosition: 'center',
             }}
           />
-          {/* Image principale */}
           <div
             className="w-2/3 flex-shrink-0 relative shadow-[inset_0px_0px_100px_50px_rgba(0,_0,_0,_0.7)]"
             style={{

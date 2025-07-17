@@ -22,7 +22,6 @@ export default function UserAds() {
                 const response = await fetch('http://localhost:3000/api/ad/user_ad', options);
                 const data = await response.json();
                 setAds(data.ads);
-                console.log(data);
                 if (data.success === false) {
                     setAds([]);
                 }
@@ -42,7 +41,7 @@ export default function UserAds() {
                 method: 'GET',
                 header: { 'Content-type': 'application/json' },
             };
-            const response = await fetch(`http://localhost:3000/api/ad/ad/${ad._id}`, options);
+            const response = await fetch(`http://localhost:3000/api/ad/ad/${ad.seller_id}`, options);
             const data = await response.json();
             if (data.success === true) {
                 navigate('/selected-ad', { state: data })
