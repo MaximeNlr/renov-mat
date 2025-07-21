@@ -4,14 +4,13 @@ import MobileHeader from "../../Components/MobileHeader/MobileHeader";
 import Promo from "../../Components/Promo/Promo";
 import Footer from "../../Components/Footer/Footer";
 import { useState, useEffect } from "react";
-import useAuth from "../../hooks/useAuth";
-import Logout from "../../Components/Logout/Logout";
 import UserInfo from "../../Components/User_info/UserInfo";
 import UserAds from "../../Components/User_Ads/UserAds";
 import UserEval from "../../Components/User_eval/UserEval";
 import UserTransaction from "../../Components/User_transactions/UserTrasactions";
 import Subscription from "../../Components/Subscription/Subscription";
 import { body } from "framer-motion/client";
+import { FaUser, FaBullhorn, FaStar, FaCreditCard } from "react-icons/fa";
 
 
 export default function Profile() {
@@ -88,7 +87,7 @@ export default function Profile() {
             <div className="hidden md:flex">
                 <Header />
             </div>
-            <div className="flex md:hidden">
+            <div className="flex pt-14 md:hidden">
                 <MobileHeader />
             </div>
             <div>
@@ -122,38 +121,41 @@ export default function Profile() {
                     </div>
                 </div>
                 <div className="mt-10">
-                    <div className="flex ml-10 gap-10 font-extrabold">
+                    <div className="flex lg:ml-10 justify-center lg:justify-normal gap-10 text-base font-extrabold">
                         <button
                             className={`hover:border-[var(--green)] border-t-2 border-l-2 border-r-2 border-transparent rounded-t-lg p-1.5 transition-colors cursor-pointer
                                 ${state === 'profile' ? `bg-[var(--green)] text-white` : ''}`}
                             onClick={fetchUserProfile}
                         >
-                            MON PROFIL
+                            <span className="block md:hidden"><FaUser /></span>
+                            <span className="hidden md:block">PROFIL</span>
                         </button>
                         <button
                             className={`hover:border-[var(--green)] border-t-2 border-l-2 border-r-2 border-transparent rounded-t-lg p-1.5 cursor-pointer
                                 ${state === 'ads' ? `bg-[var(--green)] text-white` : ''}`}
                             onClick={fetchUserAds}
                         >
-                            MES ANNONCES
+                            <span className="block md:hidden"><FaBullhorn /></span>
+                            <span className="hidden md:block">ANNONCES</span>
                         </button>
                         <button
                             className={`hover:border-[var(--green)] border-t-2 border-l-2 border-r-2 border-transparent rounded-t-lg p-1.5 cursor-pointer
                                 ${state === 'eval' ? `bg-[var(--green)] text-white` : ''}`}
                             onClick={fetchUserEval}
                         >
-                            MES ÉVALUTATIONS
+                            <span className="block md:hidden"><FaStar /></span>
+                            <span className="hidden md:block">AVIS</span>
                         </button>
                         <button
                             className={`hover:border-[var(--green)] border-t-2 border-l-2 border-r-2 border-transparent rounded-t-lg p-1.5 cursor-pointer
                                 ${state === 'tran' ? `bg-[var(--green)] text-white` : ''}`}
                             onClick={fetchUserTran}
                         >
-                            MES TRANSACTIONS
-                        </button>
+                            <span className="block md:hidden"><FaCreditCard /></span>
+                            <span className="hidden md:block">TRANSACTIONS</span></button>
                     </div>
                     <div>
-                        <div className="border-4 rounded-lg border-[var(--green)] p-8 lg:h-[400px] overflow-scroll">
+                        <div className="border-4 rounded-lg border-[var(--green)] p-8 lg:h-[450px] overflow-scroll">
                             {state === 'profile' && (
                                 <UserInfo user={user} />
                             )}

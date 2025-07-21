@@ -48,7 +48,7 @@ export default function CarouselHome() {
 
     return (
         <div className="relative w-full">
-            <div className=" w-full lg:w-[90%] lg:m-auto h-[250px] sm:h-[300px] md:h-[400px] lg:h-[500px] bg-gray-300 rounded-b-lg overflow-hidden">
+            <div className=" w-full lg:w-[90%] lg:m-auto h-[300px] sm:h-[300px] md:h-[400px] lg:h-[500px] bg-gray-300 md:rounded-b-lg overflow-hidden">
                 <motion.div
                     key={currentSlide}
                     initial={{ opacity: 0 }}
@@ -60,7 +60,7 @@ export default function CarouselHome() {
                     <img
                         src={slide.background}
                         alt={slide.title}
-                        className="absolute inset-0 w-full h-full object-cover rounded-b-lg"
+                        className="absolute inset-0 w-full h-full object-cover md:rounded-b-lg"
                         loading="lazy"
                     />
                     <div className="absolute inset-0 bg-black/10 backdrop-blur-[2px] z-0 flex flex-col justify-center gap-10 px-4 md:px-10 py-4">

@@ -24,19 +24,6 @@ body {
   font-family: 'Rubik Wet Paint', cursive;
 }
 
-.profile-inputs input,
-select {
-  @apply border-2 border-[var(--green)] rounded-[5px] w-[15vw] h-[4vh] outline-0
-}
-
-.profile-inputs label {
-  @apply w-[150px]
-}
-
-.profile-input-label-container {
-  @apply flex gap-3 items-center
-}
-
 .profile-pref {
   @apply w-1/4 rounded-[5px] text-center pt-2 pb-2 cursor-pointer whitespace-nowrap
 }

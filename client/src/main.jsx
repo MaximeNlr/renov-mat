@@ -12,9 +12,10 @@ import SelectedAd from './pages/selected-ad/SelectedAd';
 import Seller from './pages/seller/Seller';
 import Card from './pages/card/Card';
 import PrivateRoutes from './private-routes/privateRoute';
-import Auth from './pages/authentification/auth';
 import CreateAd from './pages/create_ad/CreateAd';
 import About from './pages/about/About';
+import Login from './pages/login/Login';
+import Register from './pages/register/Register';
 
 const router = createBrowserRouter([
   {
@@ -56,10 +57,6 @@ const router = createBrowserRouter([
     element: <Card />
   },
   {
-    path: "/auth",
-    element: <Auth />
-  },
-  {
     path: "/create_ad",
     element: <PrivateRoutes>
       <CreateAd />
@@ -68,6 +65,14 @@ const router = createBrowserRouter([
   {
     path: "/about",
     element: <About />
+  },
+  {
+    path: "/login",
+    element: <Login />
+  },
+  {
+    path: "/register",
+    element: <Register />
   }
 ]);
 

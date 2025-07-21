@@ -23,10 +23,10 @@ export default function SearchedProduct() {
 
     return (
         <div className="selected-product-container">
-            <div>
+            <div className='hidden md:flex'>
                 <Header />
             </div>
-            <div>
+            <div className='flex pt-14 md:hidden'>
                 <MobileHeader />
             </div>
             <div className="mb-8">

@@ -118,13 +118,13 @@ export default function Header() {
                                         className='transition-colors duration-100 cursor-pointer hover:bg-gray-300 w-full rounded-lg px-1 py-1'
 
                                     >
-                                        Profil
+                                        Mon compte
                                     </NavLink>
                                     {auth.isAuth &&
                                         <Logout />
                                     }
                                     {!auth.isAuth &&
-                                        <NavLink to="/auth">
+                                        <NavLink to="/login">
                                             Se connecter
                                         </NavLink>
                                     }

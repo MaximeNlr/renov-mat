@@ -19,8 +19,8 @@ export default function MobileHeader() {
     };
 
     return (
-        <header className="relative w-full px-4 py-2 shadow-md bg-white">
-            <div className="relative flex items-center justify-between z-50">
+        <header className="fixed top-0 left-0 h-14 w-full px-4 py-2 shadow-md bg-white z-50">
+            <div className="relative flex items-center justify-between z-40">
                 <button
                     className="flex items-center p-2 focus:outline-none"
                     onClick={handleMobileMenu}
@@ -52,23 +52,23 @@ export default function MobileHeader() {
                     className="absolute top-full left-0 w-full bg-white shadow-lg z-10"
                 >
                     <nav
-                        className="absolute top-full left-0 w-full flex flex-col gap-4 bg-white text-[var(--green)] text-lg font-semibold p-5 shadow-lg animate-slideDown z-40"
+                        className="absolute font-bold top-full left-0 w-full flex flex-col gap-4 bg-white text-[var(--green)] text-lg p-5 shadow-lg animate-slideDown z-40"
                     >
-                        <NavLink to="/" className="hover:underline">ACCUEIL</NavLink>
-                        <NavLink to="/category" className="hover:underline">CATÉGORIE</NavLink>
-                        <NavLink to="#" className="hover:underline">CONTACT</NavLink>
-                        <NavLink to="/forum" className="text-[var(--pink)] hover:underline">FORUM</NavLink>
-                        <NavLink to="/blog" className="text-[var(--purple)] hover:underline">BLOG</NavLink>
+                        <NavLink to="/" className="hover:underline">Accueil</NavLink>
+                        <NavLink to="/category" className="hover:underline">Catégorie</NavLink>
+                        <NavLink to="#" className="hover:underline">Contact</NavLink>
+                        <NavLink to="/forum" className="text-[var(--pink)] hover:underline">Forum</NavLink>
+                        <NavLink to="/blog" className="text-[var(--purple)] hover:underline">Blog</NavLink>
                         <hr className="my-2" />
 
                         {auth.isAuth &&
                             <div className="flex flex-col gap-2">
-                                <NavLink to="/profile">Mon profil</NavLink>
+                                <NavLink to="/profile">Mon compte</NavLink>
                                 <Logout />
                             </div>
                         }
                         {!auth.isAuth &&
-                            <NavLink to="/auth">
+                            <NavLink to="/login">
                                 Se connecter
                             </NavLink>
                         }
@@ -76,6 +76,5 @@ export default function MobileHeader() {
                 </motion.div>
             )}
         </header>
-
     )
 }

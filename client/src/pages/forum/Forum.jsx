@@ -9,7 +9,7 @@ export default function Forum() {
             <div className="hidden md:flex">
                 <Header />
             </div>
-            <div className="flex md:hidden">
+            <div className="flex pt-14 md:hidden">
                 <MobileHeader />
             </div>
             <div>

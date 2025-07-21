@@ -9,7 +9,7 @@ export default function PrivateRoutes({ children }) {
 
     useEffect(() => {
         if (!isAuth && !loading) {
-            navigate('/auth')
+            navigate('/login')
         }
     }, [loading, isAuth, navigate]);
 

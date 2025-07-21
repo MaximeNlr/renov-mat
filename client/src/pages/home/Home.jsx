@@ -11,11 +11,11 @@ import CreateAdBtn from "../../Components/Create_ad_btn/CreateAdBtn";
 
 export default function Home() {
     return (
-        <div>
+        <div className="">
             <div className="hidden md:flex">
                 <Header />
             </div>
-            <div className="flex md:hidden">
+            <div className="flex pt-14 md:hidden">
                 <MobileHeader />
             </div>
             <div className="home-promo-container">
@@ -24,11 +24,11 @@ export default function Home() {
             <div className="home-carousel-container">
                 <CarouselHome />
             </div>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 px-6 lg:px-20 mt-10 font-bold">
+            <div className="grid grid-cols-1 lg:grid-cols-3 order-1 gap-8 px-6 lg:px-20 mt-10 font-bold">
                 <div className="">
                     <Tendancy />
                 </div>
-                <div className="bg-white border-2 border-yellow-400 rounded-xl text-[var(--green)] flex flex-col items-center justify-center p-6 shadow-sm">
+                <div className="order-3 lg:order-2 bg-white border-2 border-yellow-400 rounded-xl text-[var(--green)] flex flex-col items-center justify-center p-6 shadow-sm">
                     <div className="flex flex-col items-center gap-3">
                         <CreateAdBtn />
                         <div>

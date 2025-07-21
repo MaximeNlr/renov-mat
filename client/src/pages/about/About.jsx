@@ -5,7 +5,7 @@ import Footer from "../../Components/Footer/Footer";
 
 export default function About() {
     return (
-        <div>
+        <div className="sm:pt-14">
             <div className="hidden md:flex">
                 <Header />
             </div>

@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { desc } from "framer-motion/client";
+import MobileHeader from "../../Components/MobileHeader/MobileHeader";
 
 export default function CreateAd() {
     const navigate = useNavigate();
@@ -57,13 +58,10 @@ export default function CreateAd() {
             console.log(error);
         }
     };
-
-
     return (
         <div>
-            <div className="flex items-center gap-10 mb-6 pl-5 pr-10 lg:h-24 w-full border-b-2 border-[var(--yellow)]">
+            <div className="hidden md:flex items-center gap-10 mb-6 pl-5 pr-10 lg:h-24 w-full border-b-2 border-[var(--yellow)]">
                 <div className="flex flex-row items-center gap-3">
-                    <img className="lg:w-[80px]" src="../../Assets/logo-renovmat.svg" alt="" />
                     <div className="renov-title flex flex-row text-3xl">
                         <h1 className="renov-title flex text-2xl">
                             <span className="text-[var(--green)]">RENOV</span>
@@ -78,9 +76,12 @@ export default function CreateAd() {
                     Quitter
                 </button>
             </div>
+            <div className="flex pt-14 md:hidden">
+                <MobileHeader />
+            </div>
             <div className="max-w-4xl mx-auto mt-10 p-6 bg-white rounded-xl shadow-lg">
                 <h2 className="text-xl font-semibold mb-4">Créer votre annonce</h2>
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-6 text-base">
                     <div>
                         <label className="block font-medium">Titre</label>
                         <input
@@ -88,7 +89,7 @@ export default function CreateAd() {
                             required
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
-                            className="w-full p-2 border rounded-md"
+                            className="w-full h-11 p-2 border rounded-md"
                         />
                     </div>
                     <div>
@@ -96,7 +97,7 @@ export default function CreateAd() {
                         <select
                             value={type}
                             onChange={(e) => setType(e.target.value)}
-                            className="w-full p-2 border rounded-md"
+                            className="h-11 min-w-[250px] md:w-full p-2 border rounded-md"
                         >
                             <option value="">Sélectionner</option>
                             {[
@@ -123,7 +124,7 @@ export default function CreateAd() {
                             <select
                                 value={unit}
                                 onChange={(e) => setUnit(e.target.value)}
-                                className="w-full p-2 border rounded-md"
+                                className="h-11 min-w-[250px] md:w-full p-2 border rounded-md"
                             >
                                 <option value="">Sélectionner</option>
                                 {["m2", "ml", "m3", "l", "kg", "u", "sac", "plaque"].map((u) => (
@@ -147,7 +148,7 @@ export default function CreateAd() {
                             <select
                                 value={state}
                                 onChange={(e) => setState(e.target.value)}
-                                className="w-full p-2 border rounded-md"
+                                className="h-11 min-w-[250px] md:w-full p-2 border rounded-md"
                             >
                                 <option value="">Sélectionner</option>
                                 {["mauvais", "moyen", "bon", "très bon", "neuf"].map((s) => (
@@ -187,7 +188,7 @@ export default function CreateAd() {
                             id=""
                             required
                             onChange={(e) => setDescription(e.target.value)}
-                            className="w-full lg:h-32 p-2 border rounded-md resize-none"
+                            className="w-full h-32 p-2 border rounded-md resize-none"
 
                         ></textarea>
                     </div>
