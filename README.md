@@ -21,7 +21,7 @@ Le projet est un site fullstack développé avec **React** pour le front-end et 
 
 ### Front-end
 
-- [React](https://reactjs.org/)
+- [React + Vite](https://vite.dev/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - Fetch API pour les requêtes HTTP
 - React Router pour la navigation
