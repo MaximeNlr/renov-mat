@@ -11,19 +11,11 @@ import CreateAdBtn from "../../Components/Create_ad_btn/CreateAdBtn";
 
 export default function Home() {
     return (
-        <div className="">
-            <div className="hidden md:flex">
-                <Header />
-            </div>
-            <div className="flex pt-14 md:hidden">
-                <MobileHeader />
-            </div>
-            <div className="home-promo-container">
-                <Promo />
-            </div>
-            <div className="home-carousel-container">
-                <CarouselHome />
-            </div>
+        <div>
+            <Header />
+            <MobileHeader />
+            <Promo />
+            <CarouselHome />
             <div className="grid grid-cols-1 lg:grid-cols-3 order-1 gap-8 px-6 lg:px-20 mt-10 font-bold">
                 <div className="">
                     <Tendancy />
@@ -45,7 +37,7 @@ export default function Home() {
                         <button className="bg-[var(--yellow)] text-black px-4 cursor-pointer">Go</button>
                     </div>
                 </div>
-                <div className="bg-yellow-400 text-white rounded-xl p-6 flex flex-col justify-between shadow-md">
+                <div className="bg-yellow-400 lg:order-2 text-white rounded-xl p-6 flex flex-col justify-between shadow-md">
                     <div className="text-2xl text-center mb-4">
                         <h2>La communauté</h2>
                         <h2>Renov’mat</h2>
@@ -61,7 +53,6 @@ export default function Home() {
                     </div>
                 </div>
             </div>
-
             <div>
                 <AdPreview />
             </div>

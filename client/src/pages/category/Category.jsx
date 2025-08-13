@@ -1,63 +1,45 @@
 import Header from "../../Components/Header/Header";
 import MobileHeader from "../../Components/MobileHeader/MobileHeader";
 import Footer from "../../Components/Footer/Footer";
-import { useState, useEffect } from "react";
+import categorydata from "../../Data/Category.json"
+import Promo from "../../Components/Promo/Promo";
 
 export default function Category() {
 
-    const [paints, setPaints] = useState([]);
-
-    useEffect(() => {
-        const fetchCategory = async () => {
-            try {
-                const response = await fetch('/data/category.json');
-                const data = await response.json();
-                setPaints(data);
-                console.log(data);
-            } catch (error) {
-                console.error("erreur lors de la recupération des catégories", error);
-            }
-        }
-        fetchCategory();
-    }, [])
-
     return (
         <div>
-            <div className="hidden md:flex">
-                <Header />
+            <Header />
+            <MobileHeader />
+            <Promo />
+            <div className="text-[var(--green)]  pt-5 text-center">
+                <h1 className="font-bold text-3xl lg:text-5xl">Catégories</h1>
+                <p className="mt-2 text-sm font-semibold md:text-lg opacity-90">Découvrez nos différentes catégories de matériaux</p>
             </div>
-            <div className="flex pt-14 md:hidden">
-                <MobileHeader />
-            </div>
-            <div className="bg-[var(--yellow)] text-white text-center p-5">
-                <h1 className="font-bold text-4xl">PEINTURE</h1>
-                <p>
-                    Envie de refaire le mur de la cuisine que vous ne supportez plus depuis
-                    déjà 5 ans ou besoin de repasser sur le coup de feutre que votre neveu à fait sur le mur du salon ?
-                </p>
-                <p>
-                    On a la peinture qu’il vous faut !  Peinture pour bois, peinture pour métal,
-                    peinture pour mur intérieur, peinture pour plafond, peinture pour façade,
-                    peinture pour sol, peinture pour carrelage, peinture pour radiateur, peinture pour meuble,
-                    peinture pour cuisine et salle de bain, peinture pour extérieur, peinture pour fer, peinture pour plastique, peinture pour parquet, peinture pour toit...
-                </p>
-            </div>
-            <div className="grid grid-cols-4 m-auto gap-[50px] lg:pt-[60px] lg:pr-[80px] lg:pl-[80px]">
-                {paints.map((paint, index) => (
+            <div className="max-w-[1280px] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 py-8 px-6">
+                {categorydata.map((category) => (
                     <div
-                        key={index}
-                        style={{ backgroundImage: `url(${paint.img})` }}
-                        className=" flex items-center justify-center lg:w-[300px] h-[300px] bg-cover rounded-2xl cursor-pointer hover:lg:scale-[1.1] hover:transition-[0.5s] transition-[0.5s]"
+                        key={category.name}
+                        className="relative group rounded-2xl overflow-hidden shadow-lg cursor-pointer transform transition duration-300 hover:scale-[1.03] hover:shadow-2xl"
                     >
-                        <div className="flex items-center text-center justify-center rounded-[50%] h-[150px] w-[150px] opacity-70 bg-white">
-                            <h3 className="font-extrabold">{paint.title}</h3>
+                        <div
+                            style={{ backgroundImage: `url(${category.image})` }}
+                            className="w-full h-60 bg-cover bg-center"
+                        ></div>
+                        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300"></div>
+                        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+                            <h3 className="text-white font-extrabold text-2xl drop-shadow-md">
+                                {category.name}
+                            </h3>
+                            <p className="mt-2 text-white text-sm opacity-90 max-w-[200px]">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            </p>
                         </div>
                     </div>
                 ))}
             </div>
-            <div>
-                <Footer />
-            </div>
+
+            <Footer />
         </div>
+
     )
 }

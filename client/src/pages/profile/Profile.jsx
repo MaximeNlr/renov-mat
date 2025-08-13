@@ -84,15 +84,9 @@ export default function Profile() {
     };
     return (
         <div>
-            <div className="hidden md:flex">
-                <Header />
-            </div>
-            <div className="flex pt-14 md:hidden">
-                <MobileHeader />
-            </div>
-            <div>
-                <Promo />
-            </div>
+            <Header />
+            <MobileHeader />
+            <Promo />
             <div className="py-5 px-2 lg:px-20 lg:py-10">
                 <div className="flex flex-col lg:flex-row justify-between">
                     <div className="flex flex-col lg:flex-row items-center lg:gap-2.5">

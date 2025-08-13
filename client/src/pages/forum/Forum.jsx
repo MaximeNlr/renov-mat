@@ -6,22 +6,16 @@ import Promo from "../../Components/Promo/Promo";
 export default function Forum() {
     return (
         <div>
-            <div className="hidden md:flex">
-                <Header />
-            </div>
-            <div className="flex pt-14 md:hidden">
-                <MobileHeader />
-            </div>
-            <div>
-                <Promo />
-            </div>
-            <div className="flex flex-row w-full gap-10 mt-10 pl-5">
-                <div className="w-[18%] whitespace-nowrap">
+            <Header />
+            <MobileHeader />
+            <Promo />
+            <div className="flex flex-col md:flex-row w-full md:pt-0 gap-10 mt-10 px-6 md:pl-5">
+                <div className="md:w-[18%] whitespace-nowrap">
                     <div className="flex flex-col bg-[var(--yellow)] rounded-[10px] mb-5 p-3">
                         <div>
                             <h2 className="text-center font-bold mb-3">Thématique</h2>
                         </div>
-                        <div className="flex flex-col gap-3 pl-[15%] text-[1rem]">
+                        <div className="flex flex-row md:flex-col gap-3 pl-[15%] text-[1rem] overflow-x-auto">
                             <div>
                                 <input className="mr-3" type="checkbox" />
                                 <label>Peinture</label>
@@ -64,7 +58,7 @@ export default function Forum() {
                         <div>
                             <h2 className="text-center font-bold mb-3">Trié par</h2>
                         </div>
-                        <div className="flex flex-col gap-3 pl-[15%] text-[1rem]">
+                        <div className="flex flex-row md:flex-col gap-3 pl-[15%] text-[1rem] overflow-x-auto">
                             <div>
                                 <input className="mr-3" type="checkbox" />
                                 <label>Du + au - récent</label>
@@ -84,7 +78,7 @@ export default function Forum() {
                         </div>
                     </div>
                 </div>
-                <div className="w-[70%] lg:pr-40">
+                <div className="md:w-[70%] lg:pr-40">
                     <div className="flex items-center gap-3 p-2 border-2 border-[var(--green)] rounded-[20px] lg:h-10 lg:w-full mb-10">
                         <img src="../../Assets/Search.svg" alt="search" />
                         <input
@@ -134,7 +128,7 @@ export default function Forum() {
                     <div className="bg-[var(--green)] h-0.5 w-1/2 mt-5 mb-5"></div>
                     <div>
                         <div className="flex items-center gap-3">
-                            <h2 className="font-extrabold whitespace-nowrap">
+                            <h2 className="font-extrabold md:whitespace-nowrap">
                                 [COUP DE MAIN LOCAL] Besoin d’un coup de main pour repeindre un plafond à Nice ce week-end
                             </h2>
                             <p className="text-[0.9rem] whitespace-nowrap">Marc.D - Ouvert</p>

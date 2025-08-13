@@ -8,6 +8,8 @@ import { Navigate } from "react-router-dom";
 import CreateAdBtn from "../../Components/Create_ad_btn/CreateAdBtn";
 import Logout from "../Logout/Logout";
 import useAuth from "../../hooks/useAuth";
+import { AnimatePresence, motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 export default function Header() {
 
@@ -52,7 +54,7 @@ export default function Header() {
     };
 
     return (
-        <header className="grid grid-cols-3 items-center px-10 text-black bg-white lg:h-24 w-full">
+        <header className="hidden md:flex flex-row justify-between items-center px-10 text-black bg-white lg:h-24 w-full">
             <div className="flex items-center gap-8">
                 <div className="renov-title flex flex-row text-3xl">
                     <h1 className="renov-title flex text-2xl">
@@ -95,41 +97,57 @@ export default function Header() {
                 <div
                     onMouseEnter={mouseOnProfile}
                     onMouseLeave={mouseNotOnProfile}
+                    onClick={dropDownMenu}
                     className=""
                 >
-                    <div className="flex items-center rounded-full !cursor-pointer">
-                        <div className="w-6 flex flex-col items-end">
-                            {isHover === true &&
-                                <FaChevronDown
-                                    onClick={dropDownMenu}
+                    <div className="">
+                        {auth.isAuth &&
+                            <div className="flex items-center rounded-full !cursor-pointer">
+                                <div className="w-6 flex flex-col items-end">
+                                    <FaChevronDown
+
+                                    />
+                                </div>
+                                <img
+                                    src={`http://localhost:3000${user.image}`} alt={user.image}
+                                    className="rounded-full object-cover h-12 w-12"
                                 />
-                            }
-                        </div>
-                        <img
-                            src={`http://localhost:3000${user.image}`} alt={user.image}
-                            className="rounded-full object-cover h-12 w-12"
-                        />
+                            </div>
+                        }
+                        {!auth.isAuth &&
+                            <Link to="/login">
+                                <button className="btn">se connecter</button>
+                            </Link>
+                        }
                     </div>
                     <div>
                         {ddIsActive === true &&
-                            <div className="absolute top-16 right-10 bg-white z-10 rounded-lg px-2 py-4 shadow-[0px_3px_7px_2px_rgba(149,_157,_165,_0.2)]">
-                                <nav className="w-full flex flex-col gap-3">
-                                    <NavLink to="/profile"
-                                        className='transition-colors duration-100 cursor-pointer hover:bg-gray-300 w-full rounded-lg px-1 py-1'
+                            <AnimatePresence>
+                                <motion.div
+                                    initial={{ opacity: 0, y: -200 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -200 }}
+                                    transition={{ duration: 0.3, ease: 'easeInOut' }}
+                                    className="absolute top-16 right-10 bg-white z-10 rounded-lg px-2 py-4 shadow-[0px_3px_7px_2px_rgba(149,_157,_165,_0.2)]"
+                                >
+                                    <nav className="w-full flex flex-col gap-3">
+                                        <NavLink to="/profile"
+                                            className='transition-colors duration-100 cursor-pointer hover:bg-gray-300 w-full rounded-lg px-1 py-1'
 
-                                    >
-                                        Mon compte
-                                    </NavLink>
-                                    {auth.isAuth &&
-                                        <Logout />
-                                    }
-                                    {!auth.isAuth &&
-                                        <NavLink to="/login">
-                                            Se connecter
+                                        >
+                                            Mon compte
                                         </NavLink>
-                                    }
-                                </nav>
-                            </div>
+                                        {auth.isAuth &&
+                                            <Logout />
+                                        }
+                                        {!auth.isAuth &&
+                                            <NavLink to="/login">
+                                                Se connecter
+                                            </NavLink>
+                                        }
+                                    </nav>
+                                </motion.div>
+                            </AnimatePresence>
                         }
                     </div>
                 </div>
@@ -137,6 +155,6 @@ export default function Header() {
                     <CardIcon />
                 </div>
             </div>
-        </header>
+        </header >
     )
 }

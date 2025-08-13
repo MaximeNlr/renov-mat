@@ -27,7 +27,7 @@ export default function Login() {
         credentials: 'include',
         body: JSON.stringify(form)
       };
-      const response = await fetch('http://localhost:3000/api/user/login', options);
+      const response = await fetch('http://localhost:3000/api/auth/login', options);
       const data = await response.json();
       console.log(data);
       if (data.success === true) {

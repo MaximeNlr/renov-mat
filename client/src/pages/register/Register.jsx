@@ -52,7 +52,7 @@ export default function Register() {
         credentials: 'include',
         body: formData
       }
-      const response = await fetch('http://localhost:3000/api/user/signup', options);
+      const response = await fetch('http://localhost:3000/api/auth/signup', options);
       const data = await response.json();
       console.log(data);
       if (data.passwordErr) {

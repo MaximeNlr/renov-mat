@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa"
 import { motion, AnimatePresence } from "framer-motion";
 import useIsMobile from "../../hooks/useIsMobile";
+import { button } from "framer-motion/client";
 
 export default function CarouselHome() {
 
@@ -113,7 +114,7 @@ export default function CarouselHome() {
                     />
                 </div>
             </div>
-            <div className="flex justify-center gap-10 mt-4 lg:hidden">
+            <div className="flex justify-center gap-10 mt-4 md:hidden">
                 <FaChevronLeft
                     className="cursor-pointer text-[var(--yellow)] text-3xl hover:text-[var(--green)] transition-colors duration-100"
                     onClick={prevslide}
@@ -122,6 +123,12 @@ export default function CarouselHome() {
                     className="cursor-pointer text-[var(--yellow)] text-3xl hover:text-[var(--green)] transition-colors duration-100"
                     onClick={nextSlide}
                 />
+                {/* {slides.map((index) => (
+                    <button
+                        key={index}
+                        className="h-3 w-3 rounded-full bg-[var(--yellow)]"
+                    ></button>
+                ))} */}
             </div>
         </div>
 

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { IoCart } from "react-icons/io5";
 
 export default function CardIcon() {
 
@@ -14,7 +15,9 @@ export default function CardIcon() {
 
     return (
         <div className="cursor-pointer relative">
-            <Link to="/card"><img className="lg:w-[30px]" src="../../Assets/ShoppingCart.svg" alt="panier" /></Link>
+            <Link to="/card">
+                <IoCart className="text-[var(--green)] text-2xl" />
+            </Link>
             {card.length > 0 && (
                 <span className="absolute -top-2 -right-2 bg-[var(--green)] text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
                     {card.length}

@@ -13,7 +13,7 @@ export default function useAuth() {
                     headers: { 'Content-type': 'application/json' },
                     credentials: 'include'
                 };
-                const response = await fetch('http://localhost:3000/api/user/check-auth', options);
+                const response = await fetch('http://localhost:3000/api/auth/check-auth', options);
                 const data = await response.json();
                 if (data.success === true) {
                     setIsAuth(true);

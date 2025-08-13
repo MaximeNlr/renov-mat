@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { desc } from "framer-motion/client";
 import MobileHeader from "../../Components/MobileHeader/MobileHeader";
+import Footer from "../../Components/Footer/Footer";
 
 export default function CreateAd() {
     const navigate = useNavigate();
@@ -76,10 +77,8 @@ export default function CreateAd() {
                     Quitter
                 </button>
             </div>
-            <div className="flex pt-14 md:hidden">
-                <MobileHeader />
-            </div>
-            <div className="max-w-4xl mx-auto mt-10 p-6 bg-white rounded-xl shadow-lg">
+            <MobileHeader />
+            <div className="max-w-4xl pt-14 md:pt-0 mx-auto mt-10 p-6 md:bg-white md:rounded-xl md:shadow-lg">
                 <h2 className="text-xl font-semibold mb-4">Créer votre annonce</h2>
                 <form onSubmit={handleSubmit} className="space-y-6 text-base">
                     <div>
@@ -200,6 +199,7 @@ export default function CreateAd() {
                     </button>
                 </form>
             </div>
+            <Footer />
         </div>
     );
 }

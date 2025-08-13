@@ -12,8 +12,6 @@ export default function Seller() {
 
     const { state: seller } = useLocation();
     const [state, setState] = useState('seller-evalutations');
-    console.log(seller);
-
 
     useEffect(() => {
         const localState = localStorage.getItem('seller-state');

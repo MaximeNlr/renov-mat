@@ -1,0 +1,27 @@
+[
+    {
+        "id": 1,
+        "name": "Peinture",
+        "image": "/Assets/category/paint.png"
+    },
+    {
+        "id": 2,
+        "name": "Outils",
+        "image": "/Assets/category/outils-bricolage.jpg"
+    },
+    {
+        "id": 3,
+        "name": "Carrelage",
+        "image": "/Assets/category/carrelage.jpg"
+    },
+    {
+        "id": 4,
+        "name": "Plomberie",
+        "image": "/Assets/category/plomberie.jpg"
+    },
+    {
+        "id": 5,
+        "name": "Electricité",
+        "image": "/Assets/category/homme-technicien-electrique.avif"
+    }
+]
