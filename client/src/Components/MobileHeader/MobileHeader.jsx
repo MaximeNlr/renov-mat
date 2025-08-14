@@ -28,7 +28,6 @@ export default function MobileHeader() {
                     onClick={handleMobileMenu}
                 >
                     <GiHamburgerMenu className="text-2xl text-[var(--green)]" />
-
                 </button>
                 <h1 className="text-xl font-bold flex items-center">
                     <span className="renov-title text-[var(--green)]">RENOV</span>

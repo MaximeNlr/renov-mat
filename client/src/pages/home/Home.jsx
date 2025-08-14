@@ -53,9 +53,7 @@ export default function Home() {
                     </div>
                 </div>
             </div>
-            <div>
-                <AdPreview />
-            </div>
+            <AdPreview />
             <div>
                 <Footer />
             </div>

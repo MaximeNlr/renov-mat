@@ -52,7 +52,7 @@ export default function CarouselHome() {
             <div className=" w-full lg:w-[90%] lg:m-auto h-[300px] sm:h-[300px] md:h-[400px] lg:h-[500px] bg-gray-300 md:rounded-b-lg overflow-hidden">
                 <motion.div
                     key={currentSlide}
-                    initial={{ opacity: 0 }}
+                    initial={{ opacity: 0, }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.5, ease: "easeInOut" }}

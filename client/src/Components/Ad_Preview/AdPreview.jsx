@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom";
 
 export default function AdPreview() {
+
+    const navigate = useNavigate()
 
     const [ads, setAds] = useState([]);
 
@@ -23,12 +26,33 @@ export default function AdPreview() {
         fetchAds();
     }, [])
 
+    const fetchSellerAd = async (id) => {
+        console.log(id);
+
+        try {
+            const options = {
+                method: 'GET',
+                headers: { 'Content-type': 'application/json' },
+            }
+            const response = await fetch(`http://localhost:3000/api/ad/ad/${id}`, options)
+            const data = await response.json();
+            if (data.success) {
+                navigate('/selected-ad', { state: data })
+                console.log(data);
+            }
+        } catch (error) {
+
+        }
+    }
+
     return (
         <section className="py-10">
             <div className="mx-auto grid max-w-6xl  grid-cols-1 gap-6 p-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                 {ads.map((ad) => (
                     <article
-                        className="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 ">
+                        onClick={() => fetchSellerAd(ad.seller_id)}
+                        className="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 "
+                    >
                         <a href="#">
                             <div className="relative flex justify-center overflow-hidden rounded-xl">
                                 <img src={ad.images[0].imageUrl} alt="" />

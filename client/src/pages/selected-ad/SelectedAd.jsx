@@ -12,6 +12,7 @@ export default function SelectedAd() {
 
 
     const { state: data } = useLocation();
+
     const navigate = useNavigate();
     const [ad, setAd] = useState([]);
     const [seller, setSeller] = useState([]);
@@ -19,7 +20,6 @@ export default function SelectedAd() {
     const [dataImages, setDataImages] = useState([]);
 
     const [isAdded, setIsAdded] = useState(false);
-
 
     useEffect(() => {
         if (data) {
@@ -66,7 +66,7 @@ export default function SelectedAd() {
                     <div className="flex flex-col md:flex-row items-center gap-4 w-full md:w-[45%] justify-center">
                         <button
                             onClick={prevImage}
-                            className="hidden flex items-center justify-center w-11 h-11 rounded-full bg-black/5 hover:bg-black/10 transition"
+                            className="hidden md:flex items-center justify-center w-11 h-11 rounded-full bg-black/5 hover:bg-black/10 transition"
                         >
                             <FaChevronLeft className="text-[var(--yellow)] text-3xl hover:text-[var(--green)] transition-colors" />
                         </button>
@@ -77,7 +77,7 @@ export default function SelectedAd() {
                         />
                         <button
                             onClick={nextImage}
-                            className="hidden flex items-center justify-center w-11 h-11 rounded-full bg-black/5 hover:bg-black/10 transition"
+                            className="hidden md:flex items-center justify-center w-11 h-11 rounded-full bg-black/5 hover:bg-black/10 transition"
                         >
                             <FaChevronRight className="text-[var(--yellow)] text-3xl hover:text-[var(--green)] transition-colors" />
                         </button>
