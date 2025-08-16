@@ -16,6 +16,7 @@ import CreateAd from './pages/create_ad/CreateAd';
 import About from './pages/about/About';
 import Login from './pages/login/Login';
 import Register from './pages/register/Register';
+import EditAd from './pages/edit_ad/EditAd';
 
 const router = createBrowserRouter([
   {
@@ -60,6 +61,12 @@ const router = createBrowserRouter([
     path: "/create_ad",
     element: <PrivateRoutes>
       <CreateAd />
+    </PrivateRoutes>
+  },
+  {
+    path: "/edit-ad/:id",
+    element: <PrivateRoutes>
+      <EditAd />
     </PrivateRoutes>
   },
   {
