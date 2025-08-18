@@ -52,7 +52,7 @@ export default function Register() {
         credentials: 'include',
         body: formData
       }
-      const response = await fetch('http://localhost:3000/api/auth/signup', options);
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/signup`, options);
       const data = await response.json();
       console.log(data);
       if (data.passwordErr) {

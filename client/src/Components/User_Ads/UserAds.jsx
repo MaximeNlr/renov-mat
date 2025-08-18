@@ -41,7 +41,7 @@ export default function UserAds() {
                 method: 'GET',
                 header: { 'Content-type': 'application/json' },
             };
-            const response = await fetch(`http://localhost:3000/api/ad/ad/${ad.seller_id}`, options);
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/ad/ad/${ad.seller_id}`, options);
             const data = await response.json();
             if (data.success === true) {
                 navigate('/selected-ad', { state: data })
@@ -101,18 +101,45 @@ export default function UserAds() {
                 {!loading && ads.map((ad) => (
                     <div
                         key={ad._id}
-                        className="max-h-[300px]"
+                        className="h-fit"
                     >
                         <div className="m-4 mx-auto max-w-screen-lg rounded-md text-gray-600">
                             <div className="relative flex h-full flex-col text-gray-600 md:flex-row gap-24">
-                                <div className="relative md:w-4/6">
+                                <div className="flex flex-col gap-2 md:w-4/6">
+                                    <div>
+                                        <img
+                                            className="lg:w-[380px] rounded-lg"
+                                            src={ad.images[0].imageUrl}
+                                            alt={ad.images[0].imageUrl}
+                                        />
+                                    </div>
                                     <div className="flex flex-col md:flex-row">
                                         <h2 className="mb-2 text-2xl font-black">{ad.title}</h2>
                                     </div>
-                                    <p className="mt-3 font-sans text-base tracking-normal">{ad.description}</p>
-                                    <div className="flex flex-col md:flex-row md:items-end">
-                                        <p className="mt-6 text-4xl font-black">{ad.price}<sup className="align-super text-sm">€</sup></p>
-                                        <span className="ml-2 text-xs uppercase">{ad.quantity} {ad.unit}</span>
+                                    <div className="flex items-baseline gap-2">
+                                        <p className="text-4xl font-black">
+                                            {ad.price}
+                                            <sup className="align-super text-sm">€</sup>
+                                        </p>
+                                        <span className="text-sm uppercase text-gray-600">
+                                            ({ad.quantity} {ad.unit})
+                                        </span>
+                                    </div>
+                                    <div className="flex gap-2">
+                                        <p className="font-semibold">Catégorie :</p>
+                                        <p>{ad.type}</p>
+                                    </div>
+                                    <div className="flex gap-2">
+                                        <p className="font-semibold">État :</p>
+                                        <p>{ad.state}</p>
+                                    </div>
+                                    <div className="flex gap-2">
+                                        <p className="font-semibold">Localisation :</p>
+                                        <p>{ad.location || "Non renseignée"}</p>
+                                    </div>
+                                    <div>
+                                        <p className="font-semibold mb-1">Description :</p>
+                                        <p className="text-gray-700">{ad.description}</p>
                                     </div>
                                     <div className="mt-8 flex flex-col sm:flex-row">
                                         <button
@@ -139,13 +166,6 @@ export default function UserAds() {
                                             <span className="ml-1.5">Supprimer mon annonce</span>
                                         </button>
                                     </div>
-                                </div>
-                                <div className="">
-                                    <img
-                                        className="lg:w-[380px]"
-                                        src={ad.images[0].imageUrl}
-                                        alt={ad.images[0].imageUrl}
-                                    />
                                 </div>
                             </div>
                         </div>

@@ -12,7 +12,7 @@ export default function Search() {
                 method: 'GET',
                 headers: { 'Content-type': 'application/json' },
             }
-            const response = await fetch('http://localhost:3000/api/ad/ads', options);
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/ad/ads`, options);
             const data = await response.json();
             console.log(data);
             if (success === true) {

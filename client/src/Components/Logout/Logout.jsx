@@ -9,7 +9,7 @@ export default function Logout() {
                 headers: { 'Content-type': 'application/json' },
                 credentials: 'include'
             };
-            const response = await fetch('http://localhost:3000/api/auth/logout', options);
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/logout`, options);
             const data = response.json();
             console.log(data);
         } catch (error) {

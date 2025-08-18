@@ -11,7 +11,7 @@ export default function SellerAds({ sellerId }) {
                     method: 'GET',
                     headers: { 'Content-type': 'application/json' },
                 };
-                const response = await fetch(`http://localhost:3000/api/ad/seller-ads/${sellerId}`, options);
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/api/ad/seller-ads/${sellerId}`, options);
                 const data = await response.json();
                 console.log('seller ads ->', data)
                 setSellerAds(data.ads);

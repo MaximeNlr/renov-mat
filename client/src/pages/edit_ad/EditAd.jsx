@@ -51,7 +51,7 @@ export default function EditAd() {
                 credentials: 'include',
                 body: formData
             }
-            const response = await fetch(`http://localhost:3000/api/ad/edit-ad/${ad._id}`, options)
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/ad/edit-ad/${ad._id}`, options)
             const data = await response.json();
             console.log(data);
 

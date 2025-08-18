@@ -50,7 +50,7 @@ export default function CreateAd() {
                 body: formData
             };
 
-            const response = await fetch("http://localhost:3000/api/ad/create_ad", options);
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/ad/create_ad`, options);
             const data = await response.json();
             if (data.success === true) {
                 navigate('/profile')
