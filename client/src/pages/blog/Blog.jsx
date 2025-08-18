@@ -17,7 +17,6 @@ export default function Blog() {
       try {
         const response = await fetch('/data/blogs.json');
         const data = await response.json();
-        console.log(data);
         setSlides(data);
         setCurrent(data[0]);
       } catch (error) {
