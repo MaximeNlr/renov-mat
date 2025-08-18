@@ -27,6 +27,9 @@ export default function AdPreview() {
     }, [])
 
     const fetchSellerAd = async (id) => {
+        const API_URL = import.meta.env.VITE_API_URL;
+        console.log('api --->', API_URL);
+
         try {
             const options = {
                 method: 'GET',
