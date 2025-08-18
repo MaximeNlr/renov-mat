@@ -11,7 +11,6 @@ export default function Logout() {
             };
             const response = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/logout`, options);
             const data = response.json();
-            console.log(data);
         } catch (error) {
             console.log(error);
         }
