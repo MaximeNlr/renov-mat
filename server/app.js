@@ -8,6 +8,7 @@ const adRoutes = require('./routes/ad');
 const passport = require('passport')
 const session = require('express-session')
 const googleStrategy = require('passport-google-oauth20').Strategy
+const path = require('path');
 const app = express();
 require('dotenv').config();
 
