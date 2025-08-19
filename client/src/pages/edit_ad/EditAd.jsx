@@ -64,7 +64,6 @@ export default function EditAd() {
         }
     }
 
-
     return (
         <div>
             <Header />

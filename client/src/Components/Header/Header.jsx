@@ -28,7 +28,7 @@ export default function Header() {
                     headers: { 'Content-type': 'application/json' },
                     credentials: 'include'
                 }
-                const response = await fetch('http://localhost:3000/api/user/info', options);
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/api/user/info`, options);
                 const data = await response.json();
                 setUser(data);
             } catch (error) {
@@ -109,7 +109,7 @@ export default function Header() {
                                     />
                                 </div>
                                 <img
-                                    src={`http://localhost:3000${user.image}`} alt={user.image}
+                                    src={`${import.meta.env.VITE_API_URL}${user.image}`} alt={user.image}
                                     className="rounded-full object-cover h-12 w-12"
                                 />
                             </div>

@@ -2,8 +2,6 @@ export default function Logout() {
 
     const logout = async (e) => {
         e.preventDefault();
-        const API_URL = import.meta.env.VITE_API_URL;
-        console.log('api --->', API_URL);
         try {
             const options = {
                 method: 'GET',

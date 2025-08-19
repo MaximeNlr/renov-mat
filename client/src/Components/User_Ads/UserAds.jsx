@@ -19,7 +19,7 @@ export default function UserAds() {
                     headers: { 'Content-type': 'application/json' },
                     credentials: 'include'
                 };
-                const response = await fetch('http://localhost:3000/api/ad/user_ad', options);
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/api/ad/user_ad`, options);
                 const data = await response.json();
                 setAds(data.ads);
                 if (data.success === false) {
@@ -58,7 +58,7 @@ export default function UserAds() {
                 headers: { 'Content-type': 'application/json' },
                 credentials: 'include'
             };
-            const response = await fetch('http://localhost:3000/api/ad/delete_ad', options);
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/ad/delete_ad`, options);
             const data = await response.json();
             console.log(data);
 

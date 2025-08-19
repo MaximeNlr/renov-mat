@@ -14,7 +14,7 @@ export default function AdPreview() {
                     method: 'GET',
                     headers: { 'Content-type': 'application/json' },
                 };
-                const response = await fetch('http://localhost:3000/api/ad/ads', options);
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/api/ad/ads`, options);
                 const data = await response.json();
                 if (data.success === true) {
                     setAds(data.ads);
@@ -27,9 +27,6 @@ export default function AdPreview() {
     }, [])
 
     const fetchSellerAd = async (id) => {
-        const API_URL = import.meta.env.VITE_API_URL;
-        console.log('api --->', API_URL);
-
         try {
             const options = {
                 method: 'GET',
