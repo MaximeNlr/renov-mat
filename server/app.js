@@ -8,7 +8,6 @@ const adRoutes = require('./routes/ad');
 const passport = require('passport')
 const session = require('express-session')
 const googleStrategy = require('passport-google-oauth20').Strategy
-const path = require('path');
 const app = express();
 require('dotenv').config();
 
@@ -28,7 +27,6 @@ app.use(cors({
   credentials: true,
 }));
 
-app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use(express.json());
 app.use(cookieParser());
 
@@ -48,7 +46,6 @@ mongoose.connect(process.env.MONGODB_URI,
 
 // app.use(passport.initialize());
 // app.use(passport.session())
-app.use(cookieParser());
 
 app.use('/api/auth', authRoutes)
 app.use('/api/user', userRoutes);

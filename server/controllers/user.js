@@ -42,17 +42,23 @@ exports.getSeller = async (req, res, next) => {
 
 exports.uploadAvatar = async (req, res, next) => {
   try {
-    req.body = sanitize(req.body, ['_id']);
     const userId = userIdFromToken(req.cookies);
-    console.log(req.files);
-    
-    const filePath = `/images/${req.files[0].filename}`;    
-    const user = await User.findByIdAndUpdate(userId, {imageUrl: filePath})
+    if (!req.file) {
+      return res.status(400).json({ success: false, message: 'Aucun fichier reçu' });
+    }
+    const fileUrl = req.file.path;
 
-    return res.status(200).json({success: true, user})
+    const user = await User.findByIdAndUpdate(
+      userId,
+      { imageUrl: fileUrl },
+      { new: true }
+    );
+
+    return res.status(200).json({ success: true, user });
   } catch (error) {
-    return res.status(500).json({success: false});
-  };
+    console.error(error);
+    return res.status(500).json({ success: false, message: 'Erreur serveur' });
+  }
 };
 
 exports.updateUser = async (req, res, next) => {

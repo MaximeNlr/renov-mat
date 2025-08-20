@@ -112,6 +112,7 @@ export default function UserAds() {
                                             src={ad.images[0].imageUrl}
                                             alt={ad.images[0].imageUrl}
                                         />
+                                        {console.log(ad.images)}
                                     </div>
                                     <div className="flex flex-col md:flex-row">
                                         <h2 className="mb-2 text-2xl font-black">{ad.title}</h2>

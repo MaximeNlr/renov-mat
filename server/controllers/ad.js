@@ -1,10 +1,11 @@
 const Ad = require('../models/ad');
-const Image = require('../models/image');
+const parser = require('../middleware/upload');
 const User = require('../models/user');
 const Seller = require('../models/seller');
 const { sanitize } = require('../utils/sanitize');
 const { userIdFromToken } = require('../utils/token');
 const adValidationSchema = require('../validations/adValidation')
+const Image = require('../models/image');
 
 exports.CreateAd = async (req, res, next) => {
 
@@ -13,7 +14,7 @@ exports.CreateAd = async (req, res, next) => {
     return res.status(400).json({message : error.details[0].message})
   }
 
-  if (!req.files || req.files.lenght === 0) {
+  if (!req.files || req.files.length === 0) {
     return res.status(400).json({message: 'Au moins une image est requise '})
   }
 
@@ -39,17 +40,14 @@ exports.CreateAd = async (req, res, next) => {
     });
 
     const savedAd = await ad.save();
-    let imagePromises = [];
 
-    if (req.files && req.files.length > 0) {
-        imagePromises = req.files.map(file => {
-          console.log(file.filename)
-        const image = new Image({
-          imageUrl: `${req.protocol}://${req.get('host')}/images/${file.filename}`,
-          ad_id: savedAd._id
-        });
-        return image.save();
-      })};
+    const imagePromises = req.files.map(file => {
+      const image = new Image({
+        imageUrl: file.path,
+        ad_id: savedAd._id
+      });
+      return image.save();
+    });
 
     const savedImages = await Promise.all(imagePromises);
 
