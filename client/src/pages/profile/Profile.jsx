@@ -93,7 +93,6 @@ export default function Profile() {
                         <label
                             className="h-14 w-14 lg:w-36 lg:h-36 aspect-square border rounded-full flex items-center justify-center overflow-hidden relative cursor-pointer"
                         >
-                            {console.log(user.image)}
                             <img
                                 src={`${user.image}`}
                                 alt={user.image}

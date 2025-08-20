@@ -43,7 +43,7 @@ export default function Seller() {
                     <div className="flex flex-row gap-4 items-center">
                         <div className="w-20 h-20 lg:w-36 lg:h-36 aspect-square border rounded-full flex items-center justify-center overflow-hidden relative cursor-pointer">
                             <img
-                                src={`${import.meta.env.VITE_API_URL}${seller.imageUrl}`} alt={seller.imageUrl}
+                                src={`${seller.imageUrl}`} alt={seller.imageUrl}
                                 className="object-cover w-full h-full z-0"
                             />
                         </div>

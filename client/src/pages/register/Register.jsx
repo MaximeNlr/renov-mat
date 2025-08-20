@@ -22,39 +22,18 @@ export default function Register() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      setImage(e.target.result);
-    };
-    reader.readAsDataURL(file);
-    setForm({ ...form, image: file });
-  };
-
   const handleSubmit = async (e) => {
+    console.log(form);
+
     e.preventDefault();
-
-    const formData = new FormData();
-    formData.append('firstname', form.firstname);
-    formData.append('lastname', form.lastname);
-    formData.append('birthday', form.birthday);
-    formData.append('email', form.email);
-    formData.append('adress', form.adress);
-    formData.append('gender', form.gender);
-    formData.append('password', form.password);
-    formData.append('image', form.image);
-
     try {
       const options = {
         method: 'POST',
-        credentials: 'include',
-        body: formData
+        headers: { 'Content-type': 'application/json' },
+        body: JSON.stringify(form)
       }
       const response = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/signup`, options);
       const data = await response.json();
-      console.log(data);
       if (data.passwordErr) {
         setPassError(data.passwordErr);
       }

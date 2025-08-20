@@ -5,11 +5,11 @@ import Search from "../Search/Search";
 import CardIcon from "../Card_icon/Card";
 import { useLocation } from "react-router-dom";
 import { Navigate } from "react-router-dom";
-import CreateAdBtn from "../../Components/Create_ad_btn/CreateAdBtn";
 import Logout from "../Logout/Logout";
 import useAuth from "../../hooks/useAuth";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
+
 
 export default function Header() {
 
@@ -54,7 +54,7 @@ export default function Header() {
     };
 
     return (
-        <header className="hidden md:flex flex-row justify-between items-center px-10 text-black bg-white lg:h-24 w-full">
+        <header className="hidden md:flex flex-row justify-between items-center px-20 text-black bg-white lg:h-24 w-full">
             <div className="flex items-center gap-8">
                 <div className="renov-title flex flex-row text-3xl">
                     <h1 className="renov-title flex text-2xl">
@@ -63,7 +63,7 @@ export default function Header() {
                     </h1>
                 </div>
             </div>
-            <nav className="flex justify-center gap-6 text-[var(--green)] mac:text-2xl font-bold">
+            <nav className="flex justify-center gap-10 text-[var(--green)] mac:text-2xl font-extrabold">
                 <NavLink to="/"
                     className={`border-b-2 border-transparent hover:border-b-[var(--green)] transition-colors duration-100 cursor-pointer
                             ${location === '/' ? 'border-b-[var(--green)]' : ''}`}
@@ -95,21 +95,22 @@ export default function Header() {
             </nav>
             <div className="relative flex justify-end items-center gap-8">
                 <div
-                    onMouseEnter={mouseOnProfile}
-                    onMouseLeave={mouseNotOnProfile}
                     onClick={dropDownMenu}
-                    className=""
                 >
-                    <div className="">
+                    <div
+                        onMouseEnter={mouseOnProfile}
+                        onMouseLeave={mouseNotOnProfile}>
                         {auth.isAuth &&
                             <div className="flex items-center rounded-full !cursor-pointer">
-                                <div className="w-6 flex flex-col items-end">
-                                    <FaChevronDown
-
-                                    />
+                                <div
+                                    className="w-6 flex flex-col items-end">
+                                    {isHover &&
+                                        <FaChevronDown
+                                        />
+                                    }
                                 </div>
                                 <img
-                                    src={`${import.meta.env.VITE_API_URL}${user.image}`} alt={user.image}
+                                    src={`${user.image}`} alt='avatar utilisateur'
                                     className="rounded-full object-cover h-12 w-12"
                                 />
                             </div>
