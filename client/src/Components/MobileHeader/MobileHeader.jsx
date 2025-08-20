@@ -30,7 +30,7 @@ export default function MobileHeader() {
                 {isActive &&
                     <RxCross2
                         onClick={() => setIsActive(false)}
-                        className="text-2xl" />
+                        className="text-2xl text-[var(--green)]" />
                 }
                 <h1 className="text-xl font-bold flex items-center">
                     <span className="renov-title text-[var(--green)]">RENOV</span>
@@ -75,9 +75,7 @@ export default function MobileHeader() {
 
                             <hr className="my-4 border-[var(--green)]/30" />
                             {auth.isAuth &&
-                                <div className="text-center">
-                                    <Logout />
-                                </div>
+                                <Logout />
                             }
                         </nav>
                     </motion.div>

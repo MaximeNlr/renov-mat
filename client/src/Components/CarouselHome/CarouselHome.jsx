@@ -64,17 +64,19 @@ export default function CarouselHome() {
                         className="absolute inset-0 w-full h-full object-cover md:rounded-b-lg"
                         loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-black/10 backdrop-blur-[2px] z-0 flex flex-col justify-center gap-10 px-4 md:px-10 py-4">
+                    <div className="absolute inset-0 bg-black/10 backdrop-blur-[2px] z-0 flex flex-col justify-center gap-8 px-4 md:px-10 py-4">
                         <div className="text-white">
                             <motion.h1
                                 initial={{ opacity: 0, x: 20 }}
                                 animate={{ opacity: 1, x: 5 }}
                                 exit={{ opacity: 0, x: -100 }}
                                 transition={{ duration: 1 }}
-                                className="flex flex-col gap-3 text-2xl sm:text-3xl lg:text-5xl font-bold"
+                                className="flex flex-col gap-2 text-3xl sm:text-4xl lg:text-6xl font-extrabold text-white drop-shadow-xl leading-tight"
                             >
                                 {slide.title}
-                                <span className="text-xl sm:text-2xl lg:text-4xl">{slide.subtitle}</span>
+                                <span className="text-lg sm:text-xl lg:text-3xl font-medium text-white/80 drop-shadow">
+                                    {slide.subtitle}
+                                </span>
                             </motion.h1>
                         </div>
                         <div>
@@ -99,6 +101,18 @@ export default function CarouselHome() {
                                 </div>
                             }
                         </div>
+                        <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 flex justify-center gap-10 mt-4 md:hidden">
+                            {slides.map((_, index) => (
+                                <button
+                                    key={index}
+                                    onClick={() => setCurrentSlide(index)}
+                                    className={`h-2 w-2 rounded-full transition-all ${currentSlide === index
+                                        ? "bg-[var(--yellow)] scale-125"
+                                        : "bg-gray-300"
+                                        }`}
+                                />
+                            ))}
+                        </div>
                     </div>
                 </motion.div>
                 <div className="hidden lg:flex absolute top-1/2 -translate-y-1/2 left-6 z-10">
@@ -114,24 +128,6 @@ export default function CarouselHome() {
                     />
                 </div>
             </div>
-            <div className="flex justify-center gap-10 mt-4 md:hidden">
-                <FaChevronLeft
-                    className="cursor-pointer text-[var(--yellow)] text-3xl hover:text-[var(--green)] transition-colors duration-100"
-                    onClick={prevslide}
-                />
-                <FaChevronRight
-                    className="cursor-pointer text-[var(--yellow)] text-3xl hover:text-[var(--green)] transition-colors duration-100"
-                    onClick={nextSlide}
-                />
-                {/* {slides.map((index) => (
-                    <button
-                        key={index}
-                        className="h-3 w-3 rounded-full bg-[var(--yellow)]"
-                    ></button>
-                ))} */}
-            </div>
         </div>
-
-
     );
 };
