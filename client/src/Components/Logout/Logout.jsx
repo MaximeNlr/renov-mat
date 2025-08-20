@@ -16,13 +16,9 @@ export default function Logout() {
     };
 
     return (
-        <div>
-            <button
-                onClick={logout}
-                className="btn"
-            >
-                Déconnexion
-            </button>
-        </div>
+        <button className="px-3 py-1 w-[60%] text-sm rounded-md border border-red-400 text-red-500 hover:bg-red-50 transition">
+            Déconnexion
+        </button>
+
     )
 }
