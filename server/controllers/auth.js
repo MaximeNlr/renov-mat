@@ -53,6 +53,7 @@ exports.signup = async (req, res, next) => {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
         sameSite: 'None',
+        path: '/',
         maxAge: 24 * 60 * 60 * 1000
       });
   
