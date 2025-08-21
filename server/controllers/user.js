@@ -5,7 +5,8 @@ require('dotenv').config();
 
 exports.getUser = async (req, res, next) => {
     try {
-        const user = await User.findOne({ _id: req.userId });
+        const userId = userIdFromToken(req);
+        const user = await User.findOne({ _id: userId });
         if (!user) {
             return res.status(404).json({success: false, message: 'Utilisateur introuvable !'})
         } else {
@@ -42,7 +43,7 @@ exports.getSeller = async (req, res, next) => {
 
 exports.uploadAvatar = async (req, res, next) => {
   try {
-    const userId = userIdFromToken(req.cookies);
+    const userId = userIdFromToken(req);
     if (!req.file) {
       return res.status(400).json({ success: false, message: 'Aucun fichier reçu' });
     }

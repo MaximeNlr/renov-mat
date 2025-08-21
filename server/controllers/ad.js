@@ -20,7 +20,7 @@ exports.CreateAd = async (req, res, next) => {
 
   try {
     req.body = sanitize(req.body, ['_id']);
-    const userId = userIdFromToken(req.cookies);
+    const userId = userIdFromToken(req);
 
     let seller = await Seller.findOne({user_id: userId});
 
@@ -63,7 +63,7 @@ exports.CreateAd = async (req, res, next) => {
 
 exports.GetUserAd = async(req, res, next) => {
   try {
-    const userId = userIdFromToken(req.cookies);
+    const userId = userIdFromToken(req);
     const seller = await Seller.findOne({user_id: userId})
     if (!seller) {
       return res.status(404).json({  success: false, message: 'Vendeur introuvable'})
@@ -106,7 +106,7 @@ exports.EditAd = async (req, res, next) => {
   }
 
   try {
-    const userId = userIdFromToken(req.cookies)
+    const userId = userIdFromToken(req)
     const seller = await Seller.findOne({user_id: userId})
     const ad = await Ad.findOneAndUpdate(
       {_id: req.params.id , seller_id: seller._id},
@@ -144,7 +144,7 @@ exports.GetAds = async(req, res, next) => {
 
 exports.deleteAd = async(req, res, next) => {
   try {
-    const userId = userIdFromToken(req.cookies);
+    const userId = userIdFromToken(req);
     const seller = await Seller.findOne({ user_id: userId })
     const ad = await Ad.findOne({ seller_id: seller._id}).populate('images');
     if (!ad) {
