@@ -20,6 +20,7 @@ export default function Logout() {
     const logout = async (e) => {
         e.preventDefault();
         try {
+            localStorage.removeItem('token');
             const options = {
                 method: 'POST',
                 headers: { 'Content-type': 'application/json' },

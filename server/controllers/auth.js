@@ -52,12 +52,12 @@ exports.signup = async (req, res, next) => {
       res.cookie('token', token, {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
-        sameSite: 'None',
+        sameSite: 'lax',
         path: '/',
         maxAge: 24 * 60 * 60 * 1000
       });
   
-      return res.status(200).json({  success: true ,message: 'Utilisateur connecté !' });
+      return res.status(200).json({  success: true ,message: 'Utilisateur connecté !', token: token });
     } catch (error) {
       return res.status(500).json({success: false, message: 'Erreur serveur'})
     }

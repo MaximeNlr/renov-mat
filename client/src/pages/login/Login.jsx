@@ -5,11 +5,13 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { MdDone } from "react-icons/md";
 import { motion } from "framer-motion";
+import useIsMobile from "../../hooks/useIsMobile";
 
 
 export default function Login() {
 
   const navigate = useNavigate();
+  const isMobile = useIsMobile();
 
   const [form, setForm] = useState({
     email: "",
@@ -34,6 +36,9 @@ export default function Login() {
       const response = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/login`, options);
       const data = await response.json();
       if (data.success === true) {
+        if (isMobile) {
+          localStorage.setItem('token', data.token)
+        }
         setErrorMessage("");
         setIsLogged(data.success)
       } else {

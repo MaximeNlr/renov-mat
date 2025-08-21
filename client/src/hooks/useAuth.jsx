@@ -9,8 +9,12 @@ export default function useAuth() {
 
         const fetchAuth = async () => {
             try {
+                const fallbackToken = localStorage.getItem('token');
+                console.log(token);
+
                 const options = {
                     headers: { 'Content-type': 'application/json' },
+                    ...(fallbackToken && { Authorization: `Bearer ${fallbackToken}` }),
                     credentials: 'include'
                 };
                 const response = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/check-auth`, options);
@@ -18,11 +22,12 @@ export default function useAuth() {
                 if (data.success === true) {
                     setIsAuth(true);
                 } else {
-                    setIsAuth(false);
+                    setIsAuth(!!fallbackToken);
                 }
             } catch (error) {
                 console.log(error);
-                setIsAuth(false)
+                const fallbackToken = localStorage.getItem('token');
+                setIsAuth(!!fallbackToken)
             } finally {
                 setLoading(false);
             }
