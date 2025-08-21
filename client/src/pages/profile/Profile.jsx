@@ -22,11 +22,15 @@ export default function Profile() {
     useEffect(() => {
         const fetchUser = async () => {
             try {
+                const fallbackToken = localStorage.getItem('token')
                 const options = {
                     method: 'GET',
-                    headers: { 'Content-type': 'application/json' },
+                    headers: {
+                        'Content-type': 'application/json',
+                        ...(fallbackToken && { "Authorization": `Bearer ${fallbackToken}` }),
+                    },
                     credentials: 'include'
-                }
+                };
                 const response = await fetch(`${import.meta.env.VITE_API_URL}/api/user/info`, options);
                 const data = await response.json();
                 setUser(data);

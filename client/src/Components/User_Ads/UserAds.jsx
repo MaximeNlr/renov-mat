@@ -14,9 +14,13 @@ export default function UserAds() {
     useEffect(() => {
         const fetchUserAd = async () => {
             try {
+                const fallbackToken = localStorage.getItem('token');
                 const options = {
                     method: 'GET',
-                    headers: { 'Content-type': 'application/json' },
+                    headers: {
+                        'Content-type': 'application/json',
+                        ...(fallbackToken && { "Authorization": `Bearer ${fallbackToken}` }),
+                    },
                     credentials: 'include'
                 };
                 const response = await fetch(`${import.meta.env.VITE_API_URL}/api/ad/user_ad`, options);
