@@ -83,12 +83,12 @@ export default function SelectedAd() {
                                 src={image}
                                 alt="Image du produit dans le panier"
                             />
-                            <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex gap-4">
+                            <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex gap-6">
                                 {adImages.map((_, index) => (
                                     <button
                                         key={index}
                                         onClick={() => showSelectedImg(index)}
-                                        className={`h-2 w-2 rounded-full transition-all ${currentImage === index
+                                        className={`h-2.5 w-2.5 rounded-full transition-all ${currentImage === index
                                             ? "bg-[var(--yellow)] scale-125"
                                             : "bg-gray-300"
                                             }`}

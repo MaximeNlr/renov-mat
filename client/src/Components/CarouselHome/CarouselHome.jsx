@@ -101,12 +101,12 @@ export default function CarouselHome() {
                                 </div>
                             }
                         </div>
-                        <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 flex justify-center gap-10 mt-4 md:hidden">
+                        <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 flex justify-center gap-8 mt-4 md:hidden">
                             {slides.map((_, index) => (
                                 <button
                                     key={index}
                                     onClick={() => setCurrentSlide(index)}
-                                    className={`h-2 w-2 rounded-full transition-all ${currentSlide === index
+                                    className={`h-2.5 w-2.5 rounded-full transition-all ${currentSlide === index
                                         ? "bg-[var(--yellow)] scale-125"
                                         : "bg-gray-300"
                                         }`}

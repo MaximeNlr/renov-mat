@@ -104,7 +104,7 @@ export default function Login() {
           </div>
         }
         {isLogged && (
-          <div className="flex flex-col items-center justify-center">
+          <div className="flex flex-col items-center justify-center pt-10">
             <motion.div
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}

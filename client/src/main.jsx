@@ -17,6 +17,7 @@ import About from './pages/about/About';
 import Login from './pages/login/Login';
 import Register from './pages/register/Register';
 import EditAd from './pages/edit_ad/EditAd';
+import Error404 from './pages/Error/Error404';
 
 const router = createBrowserRouter([
   {
@@ -80,6 +81,10 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <Register />
+  },
+  {
+    path: "*",
+    element: <Error404 />
   }
 ]);
 

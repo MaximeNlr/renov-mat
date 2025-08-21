@@ -12,8 +12,9 @@ export default function Category() {
             <MobileHeader />
             <Promo />
             <div className="text-[var(--green)]  pt-5 text-center">
-                <h1 className="font-bold text-3xl lg:text-5xl">Catégories</h1>
-                <p className="mt-2 text-sm font-semibold md:text-lg opacity-90">Découvrez nos différentes catégories de matériaux</p>
+                <h1 className="font-bold text-3xl lg:text-5xl text-[var(--green)]">
+                    Nos catégories de matériaux
+                </h1>
             </div>
             <div className="max-w-[1280px] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 py-8 px-6">
                 {categorydata.map((category) => (
@@ -37,7 +38,6 @@ export default function Category() {
                     </div>
                 ))}
             </div>
-
             <Footer />
         </div>
 

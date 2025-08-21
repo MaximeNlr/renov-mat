@@ -28,15 +28,9 @@ export default function Blog() {
 
   return (
     <div>
-      <div className="hidden md:flex">
-        <Header />
-      </div>
-      <div className="flex pt-14 md:hidden">
-        <MobileHeader />
-      </div>
-      <div>
-        <Promo />
-      </div>
+      <Header />
+      <MobileHeader />
+      <Promo />
       <div className="relative w-full mt-8 overflow-hidden">
         <div className="flex justify-center gap-16 relative h-[400px]">
           <div
