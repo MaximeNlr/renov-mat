@@ -21,7 +21,7 @@ export default function Logout() {
         e.preventDefault();
         try {
             const options = {
-                method: 'GET',
+                method: 'POST',
                 headers: { 'Content-type': 'application/json' },
                 credentials: 'include'
             };
